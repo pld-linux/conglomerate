@@ -1,13 +1,14 @@
 Summary:	Free user-friendly XML editor
 Summary(pl):	Wolnodostêpny, przyjazny dla u¿ytkownika edytor XML
 Name:		conglomerate
-Version:	0.7.8
+Version:	0.7.9
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	22ca1070b17d1438da155fb5e0c2af58
+# Source0-md5:	fb5355763a53c1ed59dc02dd14e0fac6
 Patch0:		%{name}-desktop.patch
+Patch1:		%{name}-dont_install_schemas.patch
 URL:		http://www.conglomerate.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -17,6 +18,8 @@ BuildRequires:	intltool >= 0.28
 BuildRequires:	libglade2-devel >= 2.0.1
 BuildRequires:	libgnomeui-devel >= 2.4.0
 BuildRequires:	libxslt-devel
+Requires(post):	GConf2
+Requires(post):	scrollkeeper
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -37,6 +40,7 @@ u¿ytkowników Worda.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 glib-gettextize --copy --force
@@ -47,6 +51,7 @@ intltoolize --copy --force
 %{__automake}
 %configure \
 	--enable-gtk-doc \
+	--disable-schemas-install \
 	--with-html-dir=%{_gtkdocdir}
 
 %{__make}
@@ -55,19 +60,24 @@ intltoolize --copy --force
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
 %find_lang %{name} --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /usr/bin/scrollkeeper-update
+%post
+/usr/bin/scrollkeeper-update
+%gconf_schema_install
+
 %postun -p /usr/bin/scrollkeeper-update
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr (755,root,root) %{_bindir}/*
+%{_sysconfdir}/gconf/schemas/*
 %{_datadir}/%{name}
 %{_desktopdir}/*
 %{_pixmapsdir}/*.png
