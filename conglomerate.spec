@@ -1,16 +1,19 @@
 Summary:	Free user-friendly XML editor
 Summary(pl):	Wolnodostêpny, przyjazny dla u¿ytkownika edytor XML
 Name:		conglomerate
-Version:	0.7.7
+Version:	0.7.8
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	f63dbd271dfe7605683fe7218b59f955
+# Source0-md5:	22ca1070b17d1438da155fb5e0c2af58
 Patch0:		%{name}-desktop.patch
 URL:		http://www.conglomerate.org/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:	gtk-doc
+BuildRequires:	intltool >= 0.28
 BuildRequires:	libglade2-devel >= 2.0.1
 BuildRequires:	libgnomeui-devel >= 2.4.0
 BuildRequires:	libxslt-devel
@@ -36,6 +39,12 @@ u¿ytkowników Worda.
 %patch0 -p1
 
 %build
+glib-gettextize --copy --force
+intltoolize --copy --force
+%{__aclocal}
+%{__autoheader}
+%{__autoconf}
+%{__automake}
 %configure \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
