@@ -1,9 +1,27 @@
-diff -urN aaa/conglomerate-0.5.4/data/conglomerate.desktop.in conglomerate-0.5.4/data/conglomerate.desktop.in
---- aaa/conglomerate-0.5.4/data/conglomerate.desktop.in	2003-06-25 13:37:05.000000000 +0200
-+++ conglomerate-0.5.4/data/conglomerate.desktop.in	2003-06-25 19:31:14.000000000 +0200
-@@ -4,4 +4,4 @@
- Exec=conglomerate %U
+diff -Nuard conglomerate-0.7.6.orig/data/conglomerate.desktop.in conglomerate-0.7.6/data/conglomerate.desktop.in
+--- conglomerate-0.7.6.orig/data/conglomerate.desktop.in	2003-06-26 00:25:30.000000000 +0200
++++ conglomerate-0.7.6/data/conglomerate.desktop.in	2003-11-28 20:35:42.479789248 +0100
+@@ -5,4 +5,4 @@
+ Icon=conglomerate-icon-16.png
  Terminal=0
  Type=Application
 -Categories=Application;Office;TextEditor;
 +Categories=Application;Utility;TextEditor;
+\ Brak znaku nowej linii na koñcu pliku
+diff -Nuard conglomerate-0.7.6.orig/po/pl.po conglomerate-0.7.6/po/pl.po
+--- conglomerate-0.7.6.orig/po/pl.po	2003-10-29 17:53:21.000000000 +0100
++++ conglomerate-0.7.6/po/pl.po	2003-11-28 20:36:48.973680640 +0100
+@@ -23,11 +23,11 @@
+ #: src/cong-primary-window.c:704 src/cong-primary-window.c:706
+ #: src/cong-primary-window.c:712
+ msgid "Conglomerate XML Editor"
+-msgstr "Conglomerate - edytor XML"
++msgstr "Conglomerate"
+ 
+ #: data/conglomerate.desktop.in.h:2
+ msgid "Edit XML files"
+-msgstr ""
++msgstr "Edytor XML"
+ 
+ #: glade/cong-file-import.glade.h:1
+ msgid "File Import Options"
