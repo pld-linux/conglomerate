@@ -2,7 +2,7 @@ Summary:	Free user-friendly XML editor
 Summary(pl):	Wolnodostêpny, przyjazny dla u¿ytkownika edytor XML-a
 Name:		conglomerate
 Version:	0.9.0
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/conglomerate/%{name}-%{version}.tar.gz
@@ -10,24 +10,26 @@ Source0:	http://dl.sourceforge.net/conglomerate/%{name}-%{version}.tar.gz
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-locale-names.patch
 URL:		http://www.conglomerate.org/
-BuildRequires:	GConf2-devel >= 2.4.0
+BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	enchant-devel >= 0.1.0
-BuildRequires:	gtk+2-devel >= 2:2.4.3
+BuildRequires:	gtk+2-devel >= 2:2.6.4
 BuildRequires:	gtk-doc >= 1.0
-BuildRequires:	gtksourceview-devel >= 0.6
-BuildRequires:	intltool >= 0.30
-BuildRequires:	libglade2-devel >= 2.0.1
-BuildRequires:	libgnomeprintui-devel >= 2.4.0
-BuildRequires:	libgnomeui-devel >= 2.4.0
+BuildRequires:	gtksourceview-devel >= 1.2.0
+BuildRequires:	intltool >= 0.33
+BuildRequires:	libglade2-devel >= 1:2.5.1
+BuildRequires:	libgnomeprintui-devel >= 2.10.2
+BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	libtool
-BuildRequires:	libxslt-devel >= 1.0.0
+BuildRequires:	libxslt-devel >= 1.1.14
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.196
 BuildRequires:	scrollkeeper
-Requires(post):	GConf2
+Requires(post,preun):	GConf2
+Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
-Requires:	gtk+2 >= 2:2.4.3
+Requires:	gtk+2 >= 2:2.6.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -64,7 +66,6 @@ intltoolize --copy --force
 	--disable-schemas-install \
 	--with-html-dir=%{_gtkdocdir} \
 	--enable-printing
-
 %{__make}
 
 %install
@@ -74,19 +75,28 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
+rm -r $RPM_BUILD_ROOT%{_datadir}/{application-registry,mime-info}
+
 %find_lang %{name} --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/usr/bin/scrollkeeper-update
-%gconf_schema_install
-[ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1 ||:
+%gconf_schema_install /etc/gconf/schemas/conglomerate.schemas
+/usr/bin/scrollkeeper-update -q
+/usr/bin/update-desktop-database
+
+%preun
+if [ $1 = 0 ]; then
+	%gconf_schema_uninstall /etc/gconf/schemas/conglomerate.schemas
+fi
 
 %postun
-/usr/bin/scrollkeeper-update
-[ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1
+if [ $1 = 0 ]; then
+	/usr/bin/scrollkeeper-update -q
+	/usr/bin/update-desktop-database
+fi
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
@@ -98,5 +108,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/%{name}
 %{_omf_dest_dir}/*
 %{_gtkdocdir}/%{name}
-%{_datadir}/application-registry/*
-%{_datadir}/mime-info/*
