@@ -8,7 +8,7 @@ Group:		X11/Applications
 Source0:	http://dl.sf.net//conglomerate/%{name}-%{version}.tar.gz
 # Source0-md5:	ad0d44832c72de13bda376aac3e4c3dc
 BuildRequires:	gtk+2-devel
-Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Conglomerate is a free user-friendly XML editor. It attempts to hide
