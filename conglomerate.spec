@@ -1,17 +1,17 @@
 Summary:	Free user-friendly XML editor
 Summary(pl):	Wolnodostêpny, przyjazny dla u¿ytkownika edytor XML
 Name:		conglomerate
-Version:	0.7.0
+Version:	0.7.1
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	f76ac1451593f7e92f8713bfc83205de
+# Source0-md5:	69245f82a9927458f70df54cc564bf74
 Patch0:		%{name}-desktop.patch
 URL:		http://www.conglomerate.org/
 BuildRequires:	gtk+2-devel
 BuildRequires:	libglade2-devel
-BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
+BuildRequires:	libgnomeui-devel >= 2.3.7
 BuildRequires:	libxslt-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
