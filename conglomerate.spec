@@ -5,7 +5,7 @@ Version:	0.5.3
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://unc.dl.sourceforge.net/sourceforge/conglomerate/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	5ae4a3d6b8d7957f7ad8934318bb6561
 URL:		http://www.conglomerate.org/
 BuildRequires:	gtk+2-devel
