@@ -1,5 +1,5 @@
 Summary:	Free user-friendly XML editor
-Summary(pl):	Wolnodostêpny, przyjazny dla u¿ytkownika edytor XML
+Summary(pl):	Wolnodostêpny, przyjazny dla u¿ytkownika edytor XML-a
 Name:		conglomerate
 Version:	0.7.12
 Release:	1
@@ -33,7 +33,7 @@ goal of the project is to create a free DocBook editor that Word users
 can easily learn.
 
 %description -l pl
-Conglomerate to wolnodostêpny, przyjazny dla u¿ytkownika edytor XML.
+Conglomerate to wolnodostêpny, przyjazny dla u¿ytkownika edytor XML-a.
 Próbuje ukryæ mordercze szczegó³y XML-a przed koñcowym u¿ytkownikiem.
 Potrafi obs³u¿yæ ka¿dy format pliku XML, ale jak na razie jego rozwój
 jest skoncentrowany na obs³udze dla DocBooka. Celem projektu jest
