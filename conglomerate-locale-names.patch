@@ -1,12 +1,12 @@
-diff -urN aa/conglomerate-0.7.12/configure.in conglomerate-0.7.12/configure.in
---- aa/conglomerate-0.7.12/configure.in	2004-02-17 18:32:55.000000000 +0100
-+++ conglomerate-0.7.12/configure.in	2004-02-19 23:47:20.727775032 +0100
+diff -urN conglomerate-0.9.0.orig/configure.in conglomerate-0.9.0/configure.in
+--- conglomerate-0.9.0.orig/configure.in	2005-02-19 13:54:26.480954168 +0000
++++ conglomerate-0.9.0/configure.in	2005-02-19 13:54:53.796801528 +0000
 @@ -27,7 +27,7 @@
  AC_SUBST(GETTEXT_PACKAGE)
  AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Package name for gettext])
  
--ALL_LINGUAS="az ca cs da de el en_CA en_GB es fr hr ja nl no pa pl pt ru sq sr sr@Latn sv pt_BR"
-+ALL_LINGUAS="az ca cs da de el en_CA en_GB es fr hr ja nb nl pa pl pt ru sq sr sr@Latn sv pt_BR"
+-ALL_LINGUAS="az ca cs da de el en_CA en_GB es fr hr ja nl no pa pl pt ru sq sr sr@Latn sv pt_BR zh_CN"
++ALL_LINGUAS="az ca cs da de el en_CA en_GB es fr hr ja nb nl pa pl pt ru sq sr sr@Latn sv pt_BR zh_CN"
  
  AM_GLIB_GNU_GETTEXT
  
