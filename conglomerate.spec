@@ -1,12 +1,12 @@
 Summary:	Free user-friendly XML editor
 Summary(pl):	Wolnodostêpny, przyjazny dla u¿ytkownika edytor XML
 Name:		conglomerate
-Version:	0.5.4
-Release:	2
+Version:	0.7.0
+Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	43e9a1c29fc4a096a03a0496db25a0c6
+Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+# Source0-md5:	f76ac1451593f7e92f8713bfc83205de
 Patch0:		%{name}-desktop.patch
 URL:		http://www.conglomerate.org/
 BuildRequires:	gtk+2-devel
@@ -44,10 +44,13 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang %{name}
+%find_lang %{name} --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post -p /usr/bin/scrollkeeper-update
+%postun -p /usr/bin/scrollkeeper-update
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
@@ -55,3 +58,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_desktopdir}/*
 %{_pixmapsdir}/*.png
+%{_omf_dest_dir}/*
