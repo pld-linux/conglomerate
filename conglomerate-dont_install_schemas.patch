@@ -1,0 +1,14 @@
+diff -urN aa/conglomerate-0.7.9/data/Makefile.am conglomerate-0.7.9/data/Makefile.am
+--- aa/conglomerate-0.7.9/data/Makefile.am	2004-01-03 11:36:25.000000000 +0100
++++ conglomerate-0.7.9/data/Makefile.am	2004-01-05 21:24:40.468970144 +0100
+@@ -23,8 +23,10 @@
+ stylesheet_DATA = selection-to-text.xsl
+ 
+ install-data-local:
++if GCONF_SCHEMAS_INSTALL
+ 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) \
+ 	$(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
++endif
+ 
+ EXTRA_DIST = $(desktop_in_files)	\
+ 	$(desktop_DATA)			\
