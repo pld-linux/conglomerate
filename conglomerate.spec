@@ -8,7 +8,6 @@ Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	fb5355763a53c1ed59dc02dd14e0fac6
 Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-dont_install_schemas.patch
 URL:		http://www.conglomerate.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -40,7 +39,6 @@ u¿ytkowników Worda.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 glib-gettextize --copy --force
