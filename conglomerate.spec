@@ -7,6 +7,7 @@ License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sf.net/conglomerate/%{name}-%{version}.tar.gz
 # Source0-md5:	5ae4a3d6b8d7957f7ad8934318bb6561
+URL:		http://www.conglomerate.org/
 BuildRequires:	gtk+2-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
