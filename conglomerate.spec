@@ -1,19 +1,21 @@
 Summary:	Free user-friendly XML editor
 Summary(pl):	Wolnodostêpny, przyjazny dla u¿ytkownika edytor XML-a
 Name:		conglomerate
-Version:	0.7.14
+Version:	0.7.15
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	1a04815a1059987aea45816aa1401bc3
+# Source0-md5:	463fd68d67d093a0e7b612a0a481e1ac
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-locale-names.patch
 Patch2:		%{name}-missing_files.patch
+Patch3:		%{name}-enchant.patch
 URL:		http://www.conglomerate.org/
 BuildRequires:	GConf2-devel >= 2.4.0
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
+BuildRequires:	enchant-devel >= 0.1.0
 BuildRequires:	gtk+2-devel >= 2:2.4.3
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	gtksourceview-devel >= 0.6
@@ -23,8 +25,8 @@ BuildRequires:	libgnomeprintui-devel >= 2.4.0
 BuildRequires:	libgnomeui-devel >= 2.4.0
 BuildRequires:	libxslt-devel >= 1.0.0
 Requires(post):	GConf2
-Requires(post):	scrollkeeper
-Requires:		gtk+2 >= 2:2.4.3
+Requires(post,postun):	scrollkeeper
+Requires:	gtk+2 >= 2:2.4.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -47,6 +49,7 @@ u¿ytkowników Worda.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 mv po/{no,nb}.po
 
@@ -80,8 +83,11 @@ rm -rf $RPM_BUILD_ROOT
 %post
 /usr/bin/scrollkeeper-update
 %gconf_schema_install
+[ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1 ||:
 
-%postun -p /usr/bin/scrollkeeper-update
+%postun
+/usr/bin/scrollkeeper-update
+[ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
