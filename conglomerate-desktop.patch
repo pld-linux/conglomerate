@@ -1,11 +1,11 @@
 diff -Nuard conglomerate-0.7.6.orig/data/conglomerate.desktop.in conglomerate-0.7.6/data/conglomerate.desktop.in
 --- conglomerate-0.7.6.orig/data/conglomerate.desktop.in	2003-06-26 00:25:30.000000000 +0200
 +++ conglomerate-0.7.6/data/conglomerate.desktop.in	2003-11-28 20:35:42.479789248 +0100
-@@ -5,4 +5,5 @@
+@@ -5,5 +5,6 @@
  Icon=conglomerate-icon-16.png
--Terminal=0
-+Terminal=false
+ Terminal=false
  Type=Application
 -Categories=Application;Office;TextEditor;
 +Categories=GTK;GNOME;TextEditor;
+ MimeType=text/xml;text/x-dtd;text/x-xds;
 +Encoding=UTF-8
