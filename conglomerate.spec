@@ -5,7 +5,7 @@ Version:	0.5.2
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://dl.sf.net//conglomerate/%{name}-%{version}.tar.gz
+Source0:	http://dl.sf.net/conglomerate/%{name}-%{version}.tar.gz
 # Source0-md5:	e0d3e502841b0ac7de68f545cba93b41
 BuildRequires:	gtk+2-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
