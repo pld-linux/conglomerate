@@ -1,12 +1,12 @@
 Summary:	Free user-friendly XML editor
 Summary(pl):	Wolnodostêpny, przyjazny dla u¿ytkownika edytor XML
 Name:		conglomerate
-Version:	0.7.10
+Version:	0.7.11
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	e0720de762a96ffb7108bee595823900
+# Source0-md5:	b31b955273944f7636c8c26dada76636
 Patch0:		%{name}-desktop.patch
 URL:		http://www.conglomerate.org/
 BuildRequires:	autoconf
@@ -15,6 +15,7 @@ BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:	gtk-doc
 BuildRequires:	intltool >= 0.28
 BuildRequires:	libglade2-devel >= 2.0.1
+BuildRequires:	libgnomeprintui-devel >= 2.4.0
 BuildRequires:	libgnomeui-devel >= 2.4.0
 BuildRequires:	libxslt-devel
 Requires(post):	GConf2
@@ -50,7 +51,8 @@ intltoolize --copy --force
 %configure \
 	--enable-gtk-doc \
 	--disable-schemas-install \
-	--with-html-dir=%{_gtkdocdir}
+	--with-html-dir=%{_gtkdocdir} \
+	--enable-printing
 
 %{__make}
 
@@ -80,6 +82,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/*
 %{_pixmapsdir}/*.png
 %{_omf_dest_dir}/*
-%{_gtkdocdir}/%{name}
+##%{_gtkdocdir}/%{name}
 %{_datadir}/application-registry/*
 %{_datadir}/mime-info/*
