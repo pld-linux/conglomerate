@@ -1,14 +1,18 @@
 Summary:	Free user-friendly XML editor
 Summary(pl):	Wolnodostêpny, przyjazny dla u¿ytkownika edytor XML
 Name:		conglomerate
-Version:	0.5.3
+Version:	0.5.4
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	5ae4a3d6b8d7957f7ad8934318bb6561
+# Source0-md5:	43e9a1c29fc4a096a03a0496db25a0c6
+Patch0:		%{name}-desktop.patch
 URL:		http://www.conglomerate.org/
 BuildRequires:	gtk+2-devel
+BuildRequires:	libglade2-devel
+BuildRequires:	libgnomeui-devel
+BuildRequires:	libxslt-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -28,6 +32,7 @@ u¿ytkowników Worda.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure
@@ -46,7 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%attr (755,root,root) %{_bindir}/conge
-%{_datadir}/conge
-%{_desktopdir}/conge.desktop
-%{_pixmapsdir}/*
+%attr (755,root,root) %{_bindir}/*
+%{_datadir}/%{name}
+%{_desktopdir}/*
+%{_pixmapsdir}/*.png
