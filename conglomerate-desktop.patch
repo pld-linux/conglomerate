@@ -1,0 +1,9 @@
+diff -urN aaa/conglomerate-0.5.4/data/conglomerate.desktop.in conglomerate-0.5.4/data/conglomerate.desktop.in
+--- aaa/conglomerate-0.5.4/data/conglomerate.desktop.in	2003-06-25 13:37:05.000000000 +0200
++++ conglomerate-0.5.4/data/conglomerate.desktop.in	2003-06-25 19:31:14.000000000 +0200
+@@ -4,4 +4,4 @@
+ Exec=conglomerate %U
+ Terminal=0
+ Type=Application
+-Categories=Application;Office;TextEditor;
++Categories=Application;Utility;TextEditor;
