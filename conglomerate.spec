@@ -1,28 +1,30 @@
 Summary:	Free user-friendly XML editor
 Summary(pl):	Wolnodostêpny, przyjazny dla u¿ytkownika edytor XML-a
 Name:		conglomerate
-Version:	0.7.12
+Version:	0.7.14
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	8743f9d8f079fc22f6aef70efd838aac
+# Source0-md5:	1a04815a1059987aea45816aa1401bc3
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-locale-names.patch
+Patch2:		%{name}-missing_files.patch
 URL:		http://www.conglomerate.org/
 BuildRequires:	GConf2-devel >= 2.4.0
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gtk+2-devel >= 2.2.0
-BuildRequires:	gtk-doc
+BuildRequires:	gtk+2-devel >= 2:2.4.3
+BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	gtksourceview-devel >= 0.6
-BuildRequires:	intltool >= 0.28
+BuildRequires:	intltool >= 0.30
 BuildRequires:	libglade2-devel >= 2.0.1
 BuildRequires:	libgnomeprintui-devel >= 2.4.0
 BuildRequires:	libgnomeui-devel >= 2.4.0
 BuildRequires:	libxslt-devel >= 1.0.0
 Requires(post):	GConf2
 Requires(post):	scrollkeeper
+Requires:		gtk+2 >= 2:2.4.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,6 +46,7 @@ u¿ytkowników Worda.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 mv po/{no,nb}.po
 
@@ -87,7 +90,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_desktopdir}/*
 %{_pixmapsdir}/*.png
+%{_pixmapsdir}/%{name}
 %{_omf_dest_dir}/*
-##%{_gtkdocdir}/%{name}
+%{_gtkdocdir}/%{name}
 %{_datadir}/application-registry/*
 %{_datadir}/mime-info/*
