@@ -1,15 +1,14 @@
 Summary:	Free user-friendly XML editor
 Summary(pl):	Wolnodostêpny, przyjazny dla u¿ytkownika edytor XML-a
 Name:		conglomerate
-Version:	0.7.16
+Version:	0.9.0
 Release:	1
-License:	GPL
+License:	GPL v2
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	75e35bd95e6a781d1346083b097f0c71
+Source0:	http://dl.sourceforge.net/conglomerate/%{name}-%{version}.tar.gz
+# Source0-md5:	b9c8bf5f5fc04a5e093f8a0e8a973d6a
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-locale-names.patch
-Patch2:		%{name}-missing_files.patch
 URL:		http://www.conglomerate.org/
 BuildRequires:	GConf2-devel >= 2.4.0
 BuildRequires:	autoconf >= 2.52
@@ -22,7 +21,10 @@ BuildRequires:	intltool >= 0.30
 BuildRequires:	libglade2-devel >= 2.0.1
 BuildRequires:	libgnomeprintui-devel >= 2.4.0
 BuildRequires:	libgnomeui-devel >= 2.4.0
+BuildRequires:	libtool
 BuildRequires:	libxslt-devel >= 1.0.0
+BuildRequires:	pkgconfig
+BuildRequires:	scrollkeeper
 Requires(post):	GConf2
 Requires(post,postun):	scrollkeeper
 Requires:	gtk+2 >= 2:2.4.3
@@ -47,7 +49,6 @@ u¿ytkowników Worda.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 mv po/{no,nb}.po
 
