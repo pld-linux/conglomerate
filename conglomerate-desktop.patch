@@ -7,6 +7,5 @@ diff -Nuard conglomerate-0.7.6.orig/data/conglomerate.desktop.in conglomerate-0.
 +Terminal=false
  Type=Application
 -Categories=Application;Office;TextEditor;
-+Categories=Application;Utility;TextEditor;
++Categories=GTK;GNOME;TextEditor;
 +Encoding=UTF-8
-\ Brak znaku nowej linii na koñcu pliku
