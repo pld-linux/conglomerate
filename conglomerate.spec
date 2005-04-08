@@ -24,7 +24,7 @@ BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	libtool
 BuildRequires:	libxslt-devel >= 1.1.14
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.196
+BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
@@ -55,8 +55,8 @@ u¿ytkowników Worda.
 mv po/{no,nb}.po
 
 %build
-glib-gettextize --copy --force
-intltoolize --copy --force
+%{__glib_gettextize}
+%{__intltoolize}
 %{__aclocal}
 %{__autoheader}
 %{__autoconf}
@@ -83,22 +83,16 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/{application-registry,mime-info}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-umask 022
-%gconf_schema_install /etc/gconf/schemas/conglomerate.schemas
-/usr/bin/scrollkeeper-update -q
-/usr/bin/update-desktop-database
+%gconf_schema_install conglomerate.schemas
+%scrollkeeper_update_post
+%update_desktop_database_post
 
 %preun
-if [ $1 = 0 ]; then
-	%gconf_schema_uninstall /etc/gconf/schemas/conglomerate.schemas
-fi
+%gconf_schema_uninstall conglomerate.schemas
 
 %postun
-if [ $1 = 0 ]; then
-	umask 022
-	/usr/bin/scrollkeeper-update -q
-	/usr/bin/update-desktop-database
-fi
+%scrollkeeper_update_postun
+%update_desktop_database_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
