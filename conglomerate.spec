@@ -1,12 +1,12 @@
 Summary:	Free user-friendly XML editor
 Summary(pl):	Wolnodostêpny, przyjazny dla u¿ytkownika edytor XML-a
 Name:		conglomerate
-Version:	0.9.0
+Version:	0.9.1
 Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/conglomerate/%{name}-%{version}.tar.gz
-# Source0-md5:	b9c8bf5f5fc04a5e093f8a0e8a973d6a
+# Source0-md5:	49ad67492e947d6c15e5b875d8360890
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-locale-names.patch
 URL:		http://www.conglomerate.org/

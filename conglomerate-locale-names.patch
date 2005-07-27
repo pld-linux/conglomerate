@@ -5,8 +5,8 @@ diff -urN conglomerate-0.9.0.orig/configure.in conglomerate-0.9.0/configure.in
  AC_SUBST(GETTEXT_PACKAGE)
  AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Package name for gettext])
  
--ALL_LINGUAS="az ca cs da de el en_CA en_GB es fr hr ja nl no pa pl pt ru sq sr sr@Latn sv pt_BR zh_CN"
-+ALL_LINGUAS="az ca cs da de el en_CA en_GB es fr hr ja nb nl pa pl pt ru sq sr sr@Latn sv pt_BR zh_CN"
+-ALL_LINGUAS="az ca cs da de el en_CA en_GB es fr hr ja nl no pa pl pt pt_BR ru rw sq sr sr@Latn sv uk zh_CN"
++ALL_LINGUAS="az ca cs da de el en_CA en_GB es fr hr ja nb nl pa pl pt pt_BR ru sq sr sr@Latn sv pt_BR zh_CN"
  
  AM_GLIB_GNU_GETTEXT
  
