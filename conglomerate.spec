@@ -1,5 +1,5 @@
 Summary:	Free user-friendly XML editor
-Summary(pl.UTF-8):   Wolnodostępny, przyjazny dla użytkownika edytor XML-a
+Summary(pl.UTF-8):	Wolnodostępny, przyjazny dla użytkownika edytor XML-a
 Name:		conglomerate
 Version:	0.9.1
 Release:	2
